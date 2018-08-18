@@ -15,6 +15,8 @@ $app = new \Slim\App([
 |
 */
 
-$app->get('/api/recipients', \VoucherPool\Controllers\RecipientController::class . ':getOne');
+$app->get('/api/recipients', \VoucherPool\Controllers\RecipientController::class . ':getAll');
 
 $app->post('/api/add-offer', \VoucherPool\Controllers\OfferController::class . ':addNewOffer');
+
+$app->post('/api/apply-voucher', \VoucherPool\Controllers\VoucherController::class . ':ValidateAndapplyVoucher');

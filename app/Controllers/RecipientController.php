@@ -12,9 +12,9 @@ use \VoucherPool\Models\Recipient;
 class RecipientController
 {
 
-  public function getOne(Request $request, Response $response)
+  public function getAll(Request $request, Response $response)
   {
-    $recipient = Recipient::find(1);
-    echo $recipient->email;
+    $recipients = Recipient::all();
+    return $recipients;
   }
 }
