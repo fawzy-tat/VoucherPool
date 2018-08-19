@@ -20,3 +20,5 @@ $app->get('/api/recipients', \VoucherPool\Controllers\RecipientController::class
 $app->post('/api/add-offer', \VoucherPool\Controllers\OfferController::class . ':addNewOffer');
 
 $app->post('/api/apply-voucher', \VoucherPool\Controllers\VoucherController::class . ':ValidateAndapplyVoucher');
+
+$app->post('/api/get-related-vouchers', \VoucherPool\Controllers\VoucherController::class . ':getRelatedVouchers');

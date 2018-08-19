@@ -9,11 +9,10 @@ Class Voucher extends Eloquent
 
   public function recipient()
   {
-    return $this->hasOne('VoucherPool\Models\Recipient');
+    return $this->belongsTo('VoucherPool\Models\Recipient');
   }
   public function offer()
   {
     return $this->belongsTo('VoucherPool\Models\Offer');
   }
-
 }

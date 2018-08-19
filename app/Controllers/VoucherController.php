@@ -75,6 +75,33 @@ class VoucherController
                   ->exists();
   }
 
+  /**
+   *==============================================
+   * Extra Functionality : For a given Email,
+   * return all his valid Voucher Codes with the Name of the Special Offer
+   *==============================================
+   */
+  public function getRelatedVouchers(Request $request, Response $response)
+  {
+     $recipient_vouchers = [];
+     $recipient = Recipient::with('vouchers')
+                            ->where('email',$request->getParsedBody()['email'])->first();
+    if(!$recipient)
+    {
+      return $response->withJson([
+          'Message' => "This email doesnt exist in our database!"
+      ], 400);
+    }
+    else
+    {
+      foreach ($recipient->vouchers as $voucher) {
+        $recipient_vouchers[] = (object) array('voucher_code' => $voucher->code , 'offer' => $voucher->offer->name);
+      }
+      return $response->withJson([
+          'Message' => collect($recipient_vouchers)
+      ], 400);
+    }
+  }
 
 
 }
