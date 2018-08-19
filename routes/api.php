@@ -15,8 +15,21 @@ $app = new \Slim\App([
 |
 */
 
+
+
+/**
+ * Some general REST API's
+ */
+
 $app->get('/api/recipients', \VoucherPool\Controllers\RecipientController::class . ':getAll');
 
+$app->get('/api/vouchers', \VoucherPool\Controllers\VoucherController::class . ':getAll');
+
+$app->get('/api/offers', \VoucherPool\Controllers\OfferController::class . ':getAll');
+
+/**
+ * Required task functionalties
+ */
 $app->post('/api/add-offer', \VoucherPool\Controllers\OfferController::class . ':addNewOffer');
 
 $app->post('/api/apply-voucher', \VoucherPool\Controllers\VoucherController::class . ':ValidateAndapplyVoucher');

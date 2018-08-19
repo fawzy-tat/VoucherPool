@@ -18,6 +18,18 @@ use VoucherPool\Output\MixedCharacters;
 class OfferController
 {
 
+  /**
+   *==============================================
+   * get all offers
+   *==============================================
+   */
+  public function getAll(Request $request, Response $response)
+  {
+    $offers = Offer::all();
+    return $response->withJson([
+        'offers' => $offers
+    ], 200);
+  }
 
   /**
    *==============================================

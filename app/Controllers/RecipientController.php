@@ -15,6 +15,8 @@ class RecipientController
   public function getAll(Request $request, Response $response)
   {
     $recipients = Recipient::all();
-    return $recipients;
+    return $response->withJson([
+        'recipients' => $recipients
+    ], 200);
   }
 }

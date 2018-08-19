@@ -13,6 +13,19 @@ class VoucherController
 
   /**
    *==============================================
+   * get all vpuchers
+   *==============================================
+   */
+  public function getAll(Request $request, Response $response)
+  {
+    $vouchers = Voucher::all();
+    return $response->withJson([
+        'vouchers' => $vouchers
+    ], 200);
+  }
+
+  /**
+   *==============================================
    * Apply the voucher discount after checking it's validty
    *==============================================
    */
